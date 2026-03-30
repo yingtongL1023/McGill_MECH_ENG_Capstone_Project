@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MECH463 Design Project - Team N</title>
+  <meta name="description" content="Design project: manufacturing an aorta phantom for experimental and educational use." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="bg-layer" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <header class="hero">
+      <p class="course-tag">MECH463 · Mechanical Engineering Design Project · Team N</p>
+      <h1>Design of An Anatomically Correct Dynamic Phantom for the TAVR Procedure</h1>
+      <p class="subtitle">
+        A 3D-printed physical phantom of the aortic arch for flow studies and imaging validation —
+        materials, geometry, and fabrication approach summarized below.
+      </p>
+    </header>
+
+    <main>
+      <section aria-labelledby="abstract-heading">
+        <div class="section-head">
+          <h2 id="abstract-heading">Abstract</h2>
+        </div>
+        <div class="card">
+          <p class="abstract-text">
+            Transcatheter aortic valve replacement (TAVR) is a minimally invasive alternative to open-chest surgery for aortic valve disease, yet reliable bench-scale data remain important for validating computational hemodynamics. This work develops a patient-specific aorta phantom engineered to approach tissue-like mechanical behavior for flow testing and flow visualization in support of TAVR-oriented studies. Measurements on the phantom are intended to validate physics-informed neural network (PINN) fluid models of the aorta. Anatomical geometry was extracted by segmenting clinical CT volumes in ITK-SNAP and translating the result into a manufacturable model. The phantom was fabricated by stereolithography (SLA) with materials selected for appropriate compliance and process compatibility, then housed in a sealed box that can be pressurized to mimic physiological aortic pressures during experiments. The integrated fixture provides a platform for controlled hemodynamic characterization and visualization, complementing PINN-based predictions.
+          </p>
+        </div>
+      </section>
+
+      <section aria-labelledby="team-heading">
+        <div class="section-head">
+          <h2 id="team-heading">Team</h2>
+        </div>
+        <div class="team-grid team-grid-2x2">
+          <article class="member">
+            <h3 class="member-name">Aidan Bouden</h3>
+            <a class="email-link" href="mailto:aidan.bouden@mail.mcgill.ca">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="m22 7-10 6L2 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              aidan.bouden@mail.mcgill.ca
+            </a>
+          </article>
+          <article class="member">
+            <h3 class="member-name">Glen Gaige</h3>
+            <a class="email-link" href="mailto:glen.gaige@mail.mcgill.ca">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="m22 7-10 6L2 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              glen.gaige@mail.mcgill.ca
+            </a>
+          </article>
+          <article class="member">
+            <h3 class="member-name">Yingtong Luo</h3>
+            <a class="email-link" href="mailto:yingtong.luo@mail.mcgill.ca">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="m22 7-10 6L2 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              yingtong.luo@mail.mcgill.ca
+            </a>
+          </article>
+          <article class="member">
+            <h3 class="member-name">Elaine Yang</h3>
+            <a class="email-link" href="mailto:name.surname@mail.mcgill.ca">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="m22 7-10 6L2 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              dingyue.yang@mail.mcgill.ca
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="advisor-heading">
+        <div class="section-head">
+          <h2 id="advisor-heading">Project Advisor</h2>
+        </div>
+        <div class="advisor-card">
+          <article class="member">
+            <h3 class="member-name">Prof. Rosaire Mongrain</h3>
+            <p class="advisor-bio">
+              Professor of Mechanical Engineering at McGill University
+            </p>
+            <a class="email-link" href="mailto:advisor@mcgill.ca">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="m22 7-10 6L2 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              rosaire.mongrain@mcgill.ca
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="device-heading">
+        <div class="section-head">
+          <h2 id="device-heading">Experimental Assembly</h2>
+        </div>
+        <p class="abstract-text device-lead">
+          Complete phantom test fixture: printed aorta model, fluid path, and pressurizable housing for bench-scale flow studies.
+        </p>
+        <figure class="device-showcase">
+          <div class="device-showcase-frame">
+            <img src="images/device.png" alt="Overview of the aorta phantom assembly in its test fixture" loading="lazy" />
+          </div>
+          <figcaption class="device-caption">Fig. 1 — Overall device and experimental setup</figcaption>
+        </figure>
+      </section>
+
+      <section aria-labelledby="geometry-heading">
+        <div class="section-head">
+          <h2 id="geometry-heading">Aorta Geometry Workflow</h2>
+        </div>
+        <p class="abstract-text workflow-intro">
+          Patient-specific anatomy was recovered from imaging in three stages: clinical CT slices provide the contrast data; segmentation in <strong>ITK-SNAP</strong> isolates the aortic lumen and wall; surface cleanup and meshing yield a closed <strong>STL</strong> solid suitable for SLA printing. The panels below read left to right in that&nbsp;order.
+        </p>
+        <ol class="workflow" aria-label="Geometry processing pipeline">
+          <li class="workflow-step">
+            <span class="workflow-step-num" aria-hidden="true">1</span>
+            <div class="workflow-img-wrap">
+              <img src="images/raw_ct.png" alt="Axial CT slice showing thoracic anatomy before segmentation" loading="lazy" />
+            </div>
+            <h3 class="workflow-title">Raw CT</h3>
+            <p class="workflow-blurb">Input tomography; Hounsfield contrast defines soft tissue and lumen boundaries.</p>
+          </li>
+          <li class="workflow-connector" aria-hidden="true"><span>→</span></li>
+          <li class="workflow-step">
+            <span class="workflow-step-num" aria-hidden="true">2</span>
+            <div class="workflow-img-wrap">
+              <img src="images/aorta_seg.png" alt="Aortic geometry after segmentation in ITK-SNAP" loading="lazy" />
+            </div>
+            <h3 class="workflow-title">Aorta segmentation</h3>
+            <p class="workflow-blurb">Label map from ITK-SNAP extracts the target vessel from the volume.</p>
+          </li>
+          <li class="workflow-connector" aria-hidden="true"><span>→</span></li>
+          <li class="workflow-step">
+            <span class="workflow-step-num" aria-hidden="true">3</span>
+            <div class="workflow-img-wrap">
+              <img src="images/aorta_stl.png" alt="Water-tight surface or STL mesh ready for additive manufacturing" loading="lazy" />
+            </div>
+            <h3 class="workflow-title">Print-ready STL</h3>
+            <p class="workflow-blurb">Post-processed surface mesh for slicing and stereolithography (SLA) printing.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="ack-heading">
+        <div class="section-head">
+          <h2 id="ack-heading">Acknowledgements</h2>
+        </div>
+        <div class="card">
+          <p class="abstract-text">
+            We are grateful to Professor Richard L. Leask of the Department of Chemical Engineering at McGill University for generously sharing the aorta model that informed our phantom geometry. Our thanks also go to Mr. Sam Minter at the Wong Machine Shop for skilled machining support throughout fabrication. Finally, we thank the MECH463 teaching assistants for their thoughtful feedback and constructive suggestions on successive iterations of this project.
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <p>© 2026 Yingtong Luo. Last updated: March 2026.</p>
+    </div>
+  </footer>
+</body>
+</html>
