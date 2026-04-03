@@ -1,15 +1,15 @@
 /**
- * Interactive STL preview (Three.js via dynamic import).
- * If Network shows no .stl request, the module usually failed before loader.load
- * (CDN blocked, adblock, or static import error). Dynamic import surfaces that in UI.
+ * Interactive STL preview — Three.js loaded from same site (js/vendor/), no CDN.
+ * Requires <script type="importmap"> mapping "three" → ./js/vendor/three.module.js in index.html.
  */
-const THREE_CDN = "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js";
-const STL_LOADER_CDN =
-  "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/loaders/STLLoader.js";
-const ORBIT_CDN =
-  "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/controls/OrbitControls.js";
+import * as THREE from "three";
+import { STLLoader } from "./vendor/STLLoader.js";
+import { OrbitControls } from "./vendor/OrbitControls.js";
 
-function setStatus(statusEl, msg, isError = false) {
+const container = document.getElementById("stl-viewport");
+const statusEl = document.getElementById("stl-status");
+
+function setStatus(msg, isError = false) {
   if (!statusEl) return;
   statusEl.textContent = msg;
   statusEl.classList.toggle("is-error", isError);
@@ -18,48 +18,17 @@ function setStatus(statusEl, msg, isError = false) {
   }
 }
 
-async function initStlViewer() {
-  const container = document.getElementById("stl-viewport");
-  const statusEl = document.getElementById("stl-status");
-
-  if (!container) {
-    console.warn("stl-viewer: #stl-viewport not found");
-    return;
-  }
-
-  if (window.location.protocol === "file:") {
-    setStatus(
-      statusEl,
-      "This preview cannot load the STL when you open the HTML file directly (file://). Start a local server instead — e.g. VS Code “Live Server”, or npx serve . — then open http://localhost:…",
-      true
-    );
-    return;
-  }
-
-  setStatus(statusEl, "Loading 3D engine (Three.js from CDN)…");
-
-  let THREE;
-  let STLLoader;
-  let OrbitControls;
-  try {
-    THREE = await import(THREE_CDN);
-    const stlMod = await import(STL_LOADER_CDN);
-    const orbitMod = await import(ORBIT_CDN);
-    STLLoader = stlMod.STLLoader;
-    OrbitControls = orbitMod.OrbitControls;
-  } catch (e) {
-    console.error("stl-viewer: CDN import failed (STL request never starts):", e);
-    setStatus(
-      statusEl,
-      "Could not load Three.js from the CDN (jsdelivr). Check the Console (F12). Common causes: ad blocker, corporate firewall, or offline. Unblocking cdn.jsdelivr.net fixes this — no .stl line will appear in Network until this succeeds.",
-      true
-    );
-    return;
-  }
-
+if (!container) {
+  console.warn("stl-viewer: #stl-viewport not found");
+} else if (window.location.protocol === "file:") {
+  setStatus(
+    "Open this site over http(s) — e.g. GitHub Pages or Live Server — not as a local file (file://).",
+    true
+  );
+} else {
   const stlUrl = container.dataset.stlUrl || "STL_Model/aorta_model.stl";
   const resolvedStlUrl = new URL(stlUrl, document.baseURI).href;
-  console.info("[stl-viewer] resolved STL URL:", resolvedStlUrl);
+  console.info("[stl-viewer] STL URL:", resolvedStlUrl);
 
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x0d1520);
@@ -124,8 +93,7 @@ async function initStlViewer() {
     new ResizeObserver(resize).observe(container);
   }
 
-  setStatus(statusEl, "Loading aorta_model.stl…");
-  console.info("[stl-viewer] starting FileLoader for:", resolvedStlUrl);
+  setStatus("Loading aorta_model.stl…");
 
   const loader = new STLLoader();
   loader.load(
@@ -145,16 +113,13 @@ async function initStlViewer() {
       const mesh = new THREE.Mesh(geometry, material);
       scene.add(mesh);
       frameObject(mesh);
-      setStatus(statusEl, "");
+      setStatus("");
     },
     undefined,
     (err) => {
-      console.error("stl-viewer: STL load error", resolvedStlUrl, err);
+      console.error("[stl-viewer] load failed", resolvedStlUrl, err);
       setStatus(
-        statusEl,
-        "STL request failed. URL: " +
-          resolvedStlUrl +
-          " — Open this URL in a new tab; if 404, fix path or GitHub Pages source. If CDN errors appeared first, fix those (see Console).",
+        "Could not load STL. Open this URL in a new tab to verify: " + resolvedStlUrl,
         true
       );
     }
@@ -167,13 +132,3 @@ async function initStlViewer() {
   }
   tick();
 }
-
-initStlViewer().catch((e) => {
-  console.error("stl-viewer: unexpected error", e);
-  const el = document.getElementById("stl-status");
-  if (el) {
-    el.textContent =
-      "3D viewer stopped: " + (e && e.message ? e.message : String(e)) + " — see Console (F12).";
-    el.classList.add("is-error");
-  }
-});

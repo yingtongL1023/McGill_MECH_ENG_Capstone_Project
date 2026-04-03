@@ -16,6 +16,13 @@
       }
     })();
   </script>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./js/vendor/three.module.js"
+    }
+  }
+  </script>
   <title>MECH463 Design Project - Team N</title>
   <meta name="description" content="Design project: manufacturing an aorta phantom for experimental and educational use." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -187,7 +194,7 @@
             <div class="stl-viewport-status" id="stl-status">Loading 3D model…</div>
           </div>
           <p class="stl-viewport-hint">
-            Place your <code class="stl-code">.stl</code> file in <code class="stl-code">STL_Model/</code> (same spelling as on GitHub; paths are case-sensitive online) and match the filename in <code class="stl-code">data-stl-url</code>. For local preview with Live Server, keep this <code class="stl-code">&lt;base&gt;</code> tag or open from repo root so paths resolve.
+            Three.js is bundled under <code class="stl-code">js/vendor/</code> (no CDN). Put your <code class="stl-code">.stl</code> in <code class="stl-code">STL_Model/</code> and match <code class="stl-code">data-stl-url</code>. Push the whole <code class="stl-code">js/vendor/</code> folder with your repo.
           </p>
         </div>
       </section>
