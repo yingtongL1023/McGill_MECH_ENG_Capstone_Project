@@ -1,6 +1,6 @@
 /**
  * Interactive STL preview (Three.js).
- * Set data-stl-url on #stl-viewport to your file under STL_model/ (same origin).
+ * Set data-stl-url on #stl-viewport to your file under STL_Model/ (same origin).
  */
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js";
 import { STLLoader } from "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/loaders/STLLoader.js";
@@ -92,9 +92,11 @@ if (!container) {
     new ResizeObserver(resize).observe(container);
   }
 
+  const resolvedStlUrl = new URL(stlUrl, document.baseURI).href;
+
   const loader = new STLLoader();
   loader.load(
-    stlUrl,
+    resolvedStlUrl,
     (geometry) => {
       geometry.computeVertexNormals();
       geometry.center();
@@ -113,9 +115,12 @@ if (!container) {
       setStatus("");
     },
     undefined,
-    () => {
+    (err) => {
+      console.error("stl-viewer: failed to load", resolvedStlUrl, err);
       setStatus(
-        "Could not load the STL file. Use a local server and check STL_model/ path & filename in data-stl-url.",
+        "STL request failed (often 404). The script loaded, but this file did not: " +
+          resolvedStlUrl +
+          " — On GitHub, open your repo → STL_Model/ and confirm aorta_model.stl is listed. If it is missing: git add STL_Model/aorta_model.stl, commit, push. Folder name must be STL_Model (capital M).",
         true
       );
     }

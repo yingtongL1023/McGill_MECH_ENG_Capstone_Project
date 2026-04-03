@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script>
     (function () {
-      var h = window.location.hostname;
+      var h = (window.location.hostname || "").toLowerCase();
       var p = window.location.pathname || "";
-      if (h === "yingtongL1023.github.io" && p.indexOf("/McGill_MECH_ENG_Capstone_Project") === 0) {
+      var repo = "/McGill_MECH_ENG_Capstone_Project";
+      /* Host is often yingtongl1023.github.io (lowercase L); path must match this repo (case-insensitive). */
+      if (h.endsWith(".github.io") && p.slice(0, repo.length).toLowerCase() === repo.toLowerCase()) {
         var b = document.createElement("base");
-        b.href = "/McGill_MECH_ENG_Capstone_Project/";
+        b.href = repo + "/";
         document.head.appendChild(b);
       }
     })();
