@@ -178,10 +178,10 @@
 
       <section aria-labelledby="stl-viewer-heading">
         <div class="section-head">
-          <h2 id="stl-viewer-heading">Interactive aorta geometry (STL)</h2>
+          <h2 id="stl-viewer-heading">Interactive Aorta Geometry</h2>
         </div>
         <p class="abstract-text stl-viewer-intro">
-          Rotate the print-ready surface mesh in 3D: <strong>drag</strong> to orbit, <strong>scroll</strong> or pinch to zoom, <strong>right-drag</strong> (or two-finger drag) to pan.
+          Below is an interactive 3D mesh of the processed geometry — spin it to inspect the shape from any angle.
         </p>
         <div class="stl-viewport-card card">
           <div
@@ -194,7 +194,7 @@
             <div class="stl-viewport-status" id="stl-status">Loading 3D model…</div>
           </div>
           <p class="stl-viewport-hint">
-            Three.js is bundled under <code class="stl-code">js/vendor/</code> (no CDN). Put your <code class="stl-code">.stl</code> in <code class="stl-code">STL_Model/</code> and match <code class="stl-code">data-stl-url</code>. Push the whole <code class="stl-code">js/vendor/</code> folder with your repo.
+            For our experimental visualization volume, we applied an engineering simplification to the true aortic anatomy: the vessel <strong>centerline</strong> was <strong>projected from 3D onto a 2D plane</strong> so the geometry could be conditioned to fit cleanly inside the bench-top visualization box while preserving the overall arch layout for flow and imaging studies.
           </p>
         </div>
       </section>
