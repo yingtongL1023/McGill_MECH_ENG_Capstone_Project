@@ -3,6 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (function () {
+      var h = window.location.hostname;
+      var p = window.location.pathname || "";
+      if (h === "yingtongL1023.github.io" && p.indexOf("/McGill_MECH_ENG_Capstone_Project") === 0) {
+        var b = document.createElement("base");
+        b.href = "/McGill_MECH_ENG_Capstone_Project/";
+        document.head.appendChild(b);
+      }
+    })();
+  </script>
   <title>MECH463 Design Project - Team N</title>
   <meta name="description" content="Design project: manufacturing an aorta phantom for experimental and educational use." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -167,14 +178,14 @@
           <div
             id="stl-viewport"
             class="stl-viewport"
-            data-stl-url="STL_model/aorta_model.stl"
+            data-stl-url="STL_Model/aorta_model.stl"
             role="img"
             aria-label="Interactive 3D preview of the aortic phantom STL mesh"
           >
             <div class="stl-viewport-status" id="stl-status">Loading 3D model…</div>
           </div>
           <p class="stl-viewport-hint">
-            Place your <code class="stl-code">.stl</code> file in <code class="stl-code">STL_model/</code> and match the name in <code class="stl-code">data-stl-url</code> above. If nothing loads, open this site via a local server (e.g. Live Server) — browsers block loading models from a bare <code class="stl-code">file://</code> page.
+            Place your <code class="stl-code">.stl</code> file in <code class="stl-code">STL_Model/</code> (same spelling as on GitHub; paths are case-sensitive online) and match the filename in <code class="stl-code">data-stl-url</code>. For local preview with Live Server, keep this <code class="stl-code">&lt;base&gt;</code> tag or open from repo root so paths resolve.
           </p>
         </div>
       </section>

@@ -18,7 +18,7 @@ if (!container) {
     statusEl.classList.add("is-error");
   }
 } else {
-  const stlUrl = container.dataset.stlUrl || "STL_model/aorta.stl";
+  const stlUrl = container.dataset.stlUrl || "STL_Model/aorta_model.stl";
 
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x0d1520);
