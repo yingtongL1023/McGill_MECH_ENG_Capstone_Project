@@ -156,6 +156,29 @@
         </ol>
       </section>
 
+      <section aria-labelledby="stl-viewer-heading">
+        <div class="section-head">
+          <h2 id="stl-viewer-heading">Interactive aorta geometry (STL)</h2>
+        </div>
+        <p class="abstract-text stl-viewer-intro">
+          Rotate the print-ready surface mesh in 3D: <strong>drag</strong> to orbit, <strong>scroll</strong> or pinch to zoom, <strong>right-drag</strong> (or two-finger drag) to pan.
+        </p>
+        <div class="stl-viewport-card card">
+          <div
+            id="stl-viewport"
+            class="stl-viewport"
+            data-stl-url="STL_model/aorta_model.stl"
+            role="img"
+            aria-label="Interactive 3D preview of the aortic phantom STL mesh"
+          >
+            <div class="stl-viewport-status" id="stl-status">Loading 3D model…</div>
+          </div>
+          <p class="stl-viewport-hint">
+            Place your <code class="stl-code">.stl</code> file in <code class="stl-code">STL_model/</code> and match the name in <code class="stl-code">data-stl-url</code> above. If nothing loads, open this site via a local server (e.g. Live Server) — browsers block loading models from a bare <code class="stl-code">file://</code> page.
+          </p>
+        </div>
+      </section>
+
       <section aria-labelledby="ack-heading">
         <div class="section-head">
           <h2 id="ack-heading">Acknowledgements</h2>
@@ -169,6 +192,7 @@
     </main>
   </div>
 
+  <script type="module" src="js/stl-viewer.js"></script>
   <footer class="site-footer">
     <div class="site-footer-inner">
       <p>© 2026 Yingtong Luo. Last updated: March 2026.</p>
