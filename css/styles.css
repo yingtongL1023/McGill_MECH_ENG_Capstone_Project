@@ -65,6 +65,53 @@ body {
   padding: 2.5rem 1.5rem 4rem;
 }
 
+/* Poster PDF — CTA above Abstract */
+.poster-cta {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.75rem;
+  animation: fadeUp 0.75s ease-out 0.04s both;
+}
+
+.btn-poster {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 1.35rem 0.55rem 1.15rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--bg-deep);
+  text-decoration: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #2dd4bf 0%, #5eead4 55%, #7dd3fc 130%);
+  border: 1px solid rgba(45, 212, 191, 0.55);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 6px 28px rgba(45, 212, 191, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-poster:hover {
+  transform: translateY(-2px);
+  border-color: rgba(125, 211, 252, 0.65);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+    0 10px 36px rgba(45, 212, 191, 0.4);
+}
+
+.btn-poster:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.btn-poster-icon {
+  flex-shrink: 0;
+  opacity: 0.92;
+}
+
 /* Header / hero */
 .hero {
   text-align: center;
@@ -119,6 +166,7 @@ section:nth-child(4) { animation-delay: 0.16s; }
 section:nth-child(5) { animation-delay: 0.2s; }
 section:nth-child(6) { animation-delay: 0.24s; }
 section:nth-child(7) { animation-delay: 0.28s; }
+section:nth-child(8) { animation-delay: 0.32s; }
 
 .section-head {
   display: flex;
@@ -282,6 +330,107 @@ section:nth-child(7) { animation-delay: 0.28s; }
   font-size: 0.8rem;
   color: var(--text-muted);
   text-align: center;
+}
+
+/* Physical prototype: top row = two components; bottom = full-width assembly (Acknowledgements above) */
+.prototype-intro {
+  margin: 0 0 1.25rem;
+  max-width: 46rem;
+  text-wrap: pretty;
+}
+
+.prototype-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.prototype-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.15rem;
+  align-items: stretch;
+}
+
+.prototype-fig {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.prototype-fig-wide {
+  width: 100%;
+}
+
+.prototype-frame {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-card-solid);
+  line-height: 0;
+}
+
+/* Top pair: identical frame size; photo fits inside without cropping */
+.prototype-row .prototype-frame {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.prototype-row .prototype-frame img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+/* Full-width assembly: images are pre-rotated in the files — no CSS rotation here. */
+.prototype-frame--assembly {
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.prototype-frame--assembly img {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+  object-fit: contain;
+}
+
+.prototype-caption {
+  margin: 0.7rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.prototype-caption strong {
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.prototype-caption span {
+  display: block;
+}
+
+@media (max-width: 720px) {
+  .prototype-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Full-device figure */
@@ -681,6 +830,19 @@ section:nth-child(7) { animation-delay: 0.28s; }
   .stl-viewport-card {
     padding: 0.85rem;
   }
+
+  .poster-cta {
+    margin-bottom: 1.35rem;
+  }
+
+  .btn-poster {
+    max-width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.82rem;
+  }
 }
 
 /* Touch devices: avoid “stuck” hover lift on cards */
@@ -690,6 +852,10 @@ section:nth-child(7) { animation-delay: 0.28s; }
     transform: none;
     border-color: var(--border);
     box-shadow: none;
+  }
+
+  .btn-poster:hover {
+    transform: none;
   }
 
   .gallery-item:hover img {
@@ -703,7 +869,8 @@ section:nth-child(7) { animation-delay: 0.28s; }
   }
   .hero,
   section,
-  .site-footer {
+  .site-footer,
+  .poster-cta {
     animation: none;
   }
   .gallery-item:hover img {

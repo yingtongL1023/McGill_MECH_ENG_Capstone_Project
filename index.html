@@ -44,6 +44,22 @@
     </header>
 
     <main>
+      <div class="poster-cta">
+        <a
+          class="btn-poster"
+          href="DAN-9%20Poster.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg class="btn-poster-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" stroke-width="1.65" stroke-linejoin="round"/>
+            <path d="M14 2v6h6" stroke="currentColor" stroke-width="1.65" stroke-linejoin="round"/>
+            <path d="M8 13h8M8 17h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span>Design poster</span>
+        </a>
+      </div>
+
       <section aria-labelledby="abstract-heading">
         <div class="section-head">
           <h2 id="abstract-heading">Abstract</h2>
@@ -196,6 +212,50 @@
           <p class="stl-viewport-hint">
             For our experimental visualization volume, we applied an engineering simplification to the true aortic anatomy: the vessel <strong>centerline</strong> was <strong>projected from 3D onto a 2D plane</strong> so the geometry could be conditioned to fit cleanly inside the bench-top visualization box while preserving the overall arch layout for flow and imaging studies.
           </p>
+        </div>
+      </section>
+
+      <section aria-labelledby="prototype-heading">
+        <div class="section-head">
+          <h2 id="prototype-heading">Physical Prototype</h2>
+        </div>
+        <p class="abstract-text prototype-intro">
+          The visualization box and SLA phantom are fabricated as separate subsystems, then integrated into one bench assembly for flow and imaging. Photos below follow that hierarchy: components first, complete build last.
+        </p>
+        <div class="prototype-showcase">
+          <div class="prototype-row">
+            <figure class="prototype-fig">
+              <div class="prototype-frame">
+                <img src="images/visualization_box.jpg" alt="Visualization box enclosure for the phantom experiment" loading="lazy" />
+              </div>
+              <figcaption class="prototype-caption">
+                <strong>Visualization Box</strong>
+                <span>Light-tight housing and viewing window aligned with the planar arch layout for camera / optical access.</span>
+              </figcaption>
+            </figure>
+            <figure class="prototype-fig">
+              <div class="prototype-frame">
+                <img src="images/aorta_phantom.jpg" alt="3D-printed aorta phantom in transparent resin" loading="lazy" />
+              </div>
+              <figcaption class="prototype-caption">
+                <strong>Aorta Phantom</strong>
+                <span>Stereolithography geometry tuned for compliance — the printed vessel prior to mounting in the loop.</span>
+              </figcaption>
+            </figure>
+          </div>
+          <figure class="prototype-fig prototype-fig-wide">
+            <div class="prototype-frame prototype-frame--assembly">
+              <img
+                src="images/final_assembly.png"
+                alt="Phantom, fluid path, and box in the final experimental assembly"
+                loading="lazy"
+              />
+            </div>
+            <figcaption class="prototype-caption">
+              <strong>Prototype Assembly</strong>
+              <span>Both subsystems installed together: pressurizable enclosure, aortaphantom, and interconnects ready for flow  measurements.</span>
+            </figcaption>
+          </figure>
         </div>
       </section>
 
